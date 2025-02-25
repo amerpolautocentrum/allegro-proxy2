@@ -2,8 +2,13 @@
   "name": "allegro-proxy",
   "version": "1.0.0",
   "description": "Proxy dla Allegro API",
-  "main": "api/proxy.js",
+  "main": "app/api/proxy/route.js",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "next": "^14.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   }
 }
