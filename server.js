@@ -22,8 +22,8 @@ app.get('/api/proxy', async (req, res) => {
     try {
         const response = await fetch(url, {
             headers: {
-                "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxMDg5MTM2NDIiLCJzY29wZSI6WyJhbGxlZ3JvOmFwaTpzYWxlOm9mZmVyczpyZWFkIl0sImFsbGVncm9fYXBpIjp0cnVlLCJpc3MiOiJodHRwczovL2FsbGVncm8ucGwiLCJleHAiOjE3NDA0NzEzMTksImp0aSI6IjAwYzQzZmJhLWVlYjUtNGQ3Yi1hMDc4LTQ4ZTgzY2MwODdkNCIsImNsaWVudF9pZCI6IjRhNjhkMDk0ZDljMjQ3NTRhNzBlNWY4MWVlNWIxMjQxIn0.zIuDmtfq7o-WXbMqQcQwYVOpcZ3WBrAh8HSf3OTNuP5gpp13METrCZu9mhaoUmu0oIeLM-jPKKHnvD2h85zNdcPAv6KV0xLKD-ZNY2jp61Oi0-VJYLveHoJjnC4lkm0QYmuRL1PVvtTSFCIf3fWCYvopjy2vCsXV_tyvbdMpVsawfLtW2cA6PqZPRnj7F4YFYtKq3S3trydz4e9uLT2UCXN3UT_njrEoEzwJBotnw1pYV2f1VDJS5RuPD1kGhAh3jG3FrHN1Vf1o4CyRM9zpl_KbBH3cMRpin2beYaN58qqy59YQa0uQC_InNvj3fAXN2tDw-dhKr0j4bGfxbDrO9g",
-                "Accept": "application/vnd.allegro.public.v1+json",
+                "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxMDg5MTM2NDIiLCJzY29wZSI6WyJhbGxlZ3JvOmFwaTpzYWxlOm9mZmVyczpyZWFkIl0sImFsbGVncm9fYXBpIjp0cnVlLCJpc3MiOiJodHRwczovL2FsbGVncm8ucGwiLCJleHAiOjE3NDA1NDE2MjYsImp0aSI6IjhjMDNlNmE4LWIyNzMtNGM1Ni05ODEzLTE3ZGQ5OWUwYWVmYiIsImNsaWVudF9pZCI6IjRhNjhkMDk0ZDljMjQ3NTRhNzBlNWY4MWVlNWIxMjQxIn0.MpfMd5YKaliCszHxxEC0z_16Z5IljmF1DQNaLfGOUkfvoRMjf2hCz-OCQgT48EAPZwTrU9BBqsh2ycwOh7nYyoCXDxy7wNoeM9vwJjHyMIk99_Z3ZS7AHjcTd5Rk7wHOC7ViAVvuqk4kOegLQRwt9BRi8Hh7KlWgKw3L9LGLfQT7MkMUzE2vhsS1YpuoInbY3Tq6U22GsdFcyWsWiZ4opX14M3s0yCX2BIn85LUd3zdl4ZT51L1VpRMvRdYjPrhCV1Ybq6mvP3g7jDVq-lgZyUvAV9wVnnV_bZ9XJPWdcsu_69AvR8Q_K02sKfbQk-fqFH2V0q7DZyu0ie3ySNGMLQ"
+                    "Accept": "application/vnd.allegro.public.v1+json",
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
             }
         });
