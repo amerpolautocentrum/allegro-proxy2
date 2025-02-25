@@ -1,7 +1,17 @@
 const fetch = require('node-fetch');
 
 module.exports = async (req, res) => {
-    const url = `https://api.allegro.pl/sale/offers${req.url}`;
+    const { offset = 0, limit = 6, sort = '-publication.start', ...filters } = req.query;
+    let url = `https://api.allegro.pl/sale/offers?offset=${offset}&limit=${limit}&sort=${sort}`;
+    
+    // Dodajemy filtry, jeśli są podane
+    if (filters.brand) url += `&phrase=${encodeURIComponent(filters.brand)}`;
+    if (filters.model) url += `&phrase=${encodeURIComponent(`${filters.brand || ''} ${filters.model}`)}`;
+    if (filters.yearFrom) url += `¶meter.15326=${filters.yearFrom}`;
+    if (filters.yearTo) url += `¶meter.15326=${filters.yearTo}`;
+    if (filters.priceMin) url += `&price.from=${filters.priceMin}`;
+    if (filters.priceMax) url += `&price.to=${filters.priceMax}`;
+
     try {
         const response = await fetch(url, {
             headers: {
