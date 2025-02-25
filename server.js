@@ -5,6 +5,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const ALLEGRO_API_URL = "https://api.allegro.pl";
 
+// Dodajemy middleware CORS
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*"); // Pozwala na dostęp z dowolnej domeny
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.get('/api/proxy', async (req, res) => {
     console.log("Proxy endpoint invoked");
     const { offset = '0', limit = '6', sort = '-publication.start', brand, model, yearFrom, yearTo, priceMin, priceMax } = req.query;
