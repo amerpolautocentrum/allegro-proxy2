@@ -12,21 +12,6 @@ app.use((req, res, next) => {
     next();
 });
 
-async function fetchWithRetry(url, options, retries = 10, delay = 5000) {
-    for (let i = 0; i < retries; i++) {
-        try {
-            console.log(`Próba ${i + 1} dla URL: ${url}`);
-            const response = await fetch(url, { ...options, timeout: 60000 });
-            console.log(`Próba ${i + 1} zakończona sukcesem`);
-            return response;
-        } catch (error) {
-            console.error(`Próba ${i + 1} nieudana: ${error.message}`);
-            if (i === retries - 1) throw error;
-            await new Promise(resolve => setTimeout(resolve, delay));
-        }
-    }
-}
-
 app.get('/api/proxy', async (req, res) => {
     console.log("Proxy endpoint invoked");
     const { offset = '0', limit = '6', sort = '-publication.start', brand, model, yearFrom, yearTo, priceMin, priceMax } = req.query;
@@ -42,7 +27,7 @@ app.get('/api/proxy', async (req, res) => {
     console.log("Fetching URL:", url);
 
     try {
-        const response = await fetchWithRetry(url, {
+        const response = await fetch(url, {
             headers: {
                 "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxMDg5MTM2NDIiLCJzY29wZSI6WyJhbGxlZ3JvOmFwaTpzYWxlOm9mZmVyczpyZWFkIl0sImFsbGVncm9fYXBpIjp0cnVlLCJpc3MiOiJodHRwczovL2FsbGVncm8ucGwiLCJleHAiOjE3NDA1NDgwMDksImp0aSI6ImIxOTNjNDQ4LTI5ZTYtNDFkNi1iZGZlLTQ5ZjExZjkzZWIzNSIsImNsaWVudF9pZCI6IjRhNjhkMDk0ZDljMjQ3NTRhNzBlNWY4MWVlNWIxMjQxIn0.123Q0wwdP011vODzvHlD2PiLzOSH4iWByqDISKkvZGqK0kHoARI2L5JElJ0J8XBMPPmHP1Ye-uzE-O2yQECiruFQLh3B-Mac6mrSm6G9kLuJcBo5-Ozvo6a0fsl9OPOlIiQI7_Y51vHoHwlR6ermK4HFFVn7XlIt_ZEu2EdOPIYOrdAKDYBlb__zXUhC8uTXPYdt924SJ_62S4gAjFq3-bAyUCgRdvWNuLa8wHLQfMVXiC3nfRK0rcwO8O5DSZ57LqeHMIR6YaSLVclUQIVxyqLsBxNI0gQ_yX64c3d0DrrfDiDPS8hqeL22ySi7B8hA_1weMsDABeRNdD2l1_2eNg",
                 "Accept": "application/vnd.allegro.public.v1+json",
