@@ -5,7 +5,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const ALLEGRO_API_URL = "https://api.allegro.pl";
 
-// Middleware CORS
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
@@ -13,15 +12,16 @@ app.use((req, res, next) => {
     next();
 });
 
-// Funkcja retry z opóźnieniem
-async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
+async function fetchWithRetry(url, options, retries = 10, delay = 5000) {
     for (let i = 0; i < retries; i++) {
         try {
-            const response = await fetch(url, { ...options, timeout: 10000 });
+            console.log(`Próba ${i + 1} dla URL: ${url}`);
+            const response = await fetch(url, { ...options, timeout: 60000 });
+            console.log(`Próba ${i + 1} zakończona sukcesem`);
             return response;
         } catch (error) {
-            if (i === retries - 1) throw error; // Ostatnia próba – rzucamy błąd
-            console.log(`Próba ${i + 1} nieudana: ${error.message}. Czekam ${delay}ms...`);
+            console.error(`Próba ${i + 1} nieudana: ${error.message}`);
+            if (i === retries - 1) throw error;
             await new Promise(resolve => setTimeout(resolve, delay));
         }
     }
