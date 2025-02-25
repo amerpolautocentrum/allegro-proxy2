@@ -1,0 +1,9 @@
+{
+  "name": "allegro-proxy",
+  "version": "1.0.0",
+  "description": "Proxy dla Allegro API",
+  "main": "api/index.js",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
