@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3000;
 const ALLEGRO_API_URL = "https://api.allegro.pl";
 
 app.get('/api/proxy', async (req, res) => {
+    console.log("Proxy endpoint invoked");
     const { offset = '0', limit = '6', sort = '-publication.start', brand, model, yearFrom, yearTo, priceMin, priceMax } = req.query;
 
     let url = `${ALLEGRO_API_URL}/sale/offers?offset=${offset}&limit=${limit}&sort=${sort}`;
@@ -16,6 +17,8 @@ app.get('/api/proxy', async (req, res) => {
     if (priceMin) url += `&price.from=${priceMin}`;
     if (priceMax) url += `&price.to=${priceMax}`;
 
+    console.log("Fetching URL:", url);
+
     try {
         const response = await fetch(url, {
             headers: {
@@ -25,14 +28,20 @@ app.get('/api/proxy', async (req, res) => {
             }
         });
 
+        const status = response.status;
+        console.log("Response status:", status);
+
         if (!response.ok) {
             const errorText = await response.text();
-            return res.status(response.status).json({ error: `Błąd HTTP: ${response.status} - ${errorText}` });
+            console.log("Error text:", errorText);
+            return res.status(response.status).json({ error: `Błąd HTTP: ${status} - ${errorText}` });
         }
 
         const data = await response.json();
+        console.log("Response data:", data);
         res.json(data);
     } catch (error) {
+        console.error("Proxy error:", error.message);
         res.status(500).json({ error: error.message });
     }
 });
