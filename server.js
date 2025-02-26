@@ -29,7 +29,7 @@ app.get('/api/proxy', async (req, res) => {
     try {
         const response = await fetch(url, {
             headers: {
-                "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxMDg5MTM2NDIiLCJzY29wZSI6WyJhbGxlZ3JvOmFwaTpzYWxlOm9mZmVyczpyZWFkIl0sImFsbGVncm9fYXBpIjp0cnVlLCJpc3MiOiJodHRwczovL2FsbGVncm8ucGwiLCJleHAiOjE3NDA1NDgwMDksImp0aSI6ImIxOTNjNDQ4LTI5ZTYtNDFkNi1iZGZlLTQ5ZjExZjkzZWIzNSIsImNsaWVudF9pZCI6IjRhNjhkMDk0ZDljMjQ3NTRhNzBlNWY4MWVlNWIxMjQxIn0.123Q0wwdP011vODzvHlD2PiLzOSH4iWByqDISKkvZGqK0kHoARI2L5JElJ0J8XBMPPmHP1Ye-uzE-O2yQECiruFQLh3B-Mac6mrSm6G9kLuJcBo5-Ozvo6a0fsl9OPOlIiQI7_Y51vHoHwlR6ermK4HFFVn7XlIt_ZEu2EdOPIYOrdAKDYBlb__zXUhC8uTXPYdt924SJ_62S4gAjFq3-bAyUCgRdvWNuLa8wHLQfMVXiC3nfRK0rcwO8O5DSZ57LqeHMIR6YaSLVclUQIVxyqLsBxNI0gQ_yX64c3d0DrrfDiDPS8hqeL22ySi7B8hA_1weMsDABeRNdD2l1_2eNg",
+                "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiIxMDg5MTM2NDIiLCJzY29wZSI6WyJhbGxlZ3JvOmFwaTpzYWxlOm9mZmVyczpyZWFkIl0sImFsbGVncm9fYXBpIjp0cnVlLCJpc3MiOiJodHRwczovL2FsbGVncm8ucGwiLCJleHAiOjE3NDA1OTg4NzMsImp0aSI6Ijg2ZmM3YzFlLWIyY2MtNDFlYi1hNGQ1LTliNDlmN2RjOTNjOSIsImNsaWVudF9pZCI6IjRhNjhkMDk0ZDljMjQ3NTRhNzBlNWY4MWVlNWIxMjQxIn0.c6J2hsImYRfcM_whkY14PeAf4pAV1rBuNGv4-f1tkgO8Qk4XFx5PQBUfwsHN1Ixj7Wkoxmp22PqQiUxTsbnGOQ9dBVE3br6Q0liDJM1p1nXAKhr2oKEsPDeJOlISW8zD4IdCVKLDxTXE98PAmZW1gq9PXLRXc1KKF6JPoMcK94-5gJmNJWIDbfoAoaG9CwP4ZuazPQ86eatnpWPf3I8HbSD4HMaYM5zqxwYRVG5bILZv3u3kFBaIh5mBNHsesT0sjAAkmG30pg5N0cR3BjigNc3gX4zRZuApwskd9Tl9RjMzjKUk6Lw2Jup9SUwHolZBd402-4XHDPcFOb-lIMoqsQ",
                 "Accept": "application/vnd.allegro.public.v1+json",
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
             }
